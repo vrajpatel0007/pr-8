@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car</title>
+</head>
+
+<body style="background-color: black;">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <div class="container">
+        <div class="row pt-5 pb-5">
+            <div class="col-md-2">
+                <button onclick="viewAllRecord()" class="btn btn-primary">All</button>
+            </div>
+            <div class="col-md-2">
+                <button onclick="lamborghiniData()" class="btn btn-primary">lamborghini</button>
+            </div>
+            <div class="col-md-2">
+                <button onclick="bugattiData()" class="btn btn-primary">bugatti</button>
+            </div>
+            <div class="col-md-2">
+                <button onclick="koenigseggData()" class="btn btn-primary">koenigsegg</button>
+            </div>
+            <div class="col-md-2">
+                <button onclick="toyotaData()" class="btn btn-primary">toyota supra</button>
+            </div>
+        </div>
+        <span></span>
+
+        <div class="row" id="allrecord">
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<script type="text/javascript">
+
+    let data = [
+        {
+            name: "Lamborghini Revuelto",
+            price: "Rs. 10.00 Crore",
+            image: "https://robbreport.com/wp-content/uploads/2023/03/revuelta00.jpg?w=1000",
+            category: "lamborghini"
+        },
+        {
+            name: "Lamborghini Huracan Sterrato",
+            price: "Rs 4.61 crore",
+            image: "https://imgd-ct.aeplcdn.com/642x361/n/cw/ec/136879/lamborghini-huracan-evo-right-front-three-quarter0.jpeg?isig=0&q=75",
+            category: "lamborghini"
+        },
+        {
+            name: "Lamborghini Huracan Tecnica",
+            price: "Rs 4.61 crore",
+            image: "https://www.motortrend.com/uploads/2022/04/Layer-1-1.png",
+            category: "lamborghini"
+        },
+        {
+            name: "Lamborghini Huracan Sto",
+            price: "Rs 4.99 crore",
+            image: "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/model_detail/huracan/sto/og/huracan_sto_og.jpg",
+            category: "lamborghini"
+        },
+        {
+            name: "Lamborghini huracán evo spyder",
+            price: "Rs  4.10 crore",
+            image: "https://cdni.autocarindia.com/ExtraImages/20191004033048_Huracan_Evo-Spyder-fronty.jpg",
+            category: "lamborghini"
+        },
+        {
+            name: "Lamborghini Urus",
+            price: "Rs  4.18 crore",
+            image: "https://imgcdn.zigwheels.ph/large/gallery/exterior/51/2017/lamborghini-urus-front-medium-view-139490.jpg",
+            category: "lamborghini"
+        },
+        {
+            name: "Bugatti Veyron",
+            price: "Rs  13.03 crore",
+            image: "https://stimg.cardekho.com/images/carexteriorimages/930x620/Bugatti/Bugatti-Veyron/1340/1559125026509/front-left-side-47.jpg",
+            category: "bugatti"
+        },
+        {
+            name: "Bugatti Chiron",
+            price: "Rs  28.40 crore",
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Bugatti_Chiron_%2836559710091%29.jpg/1200px-Bugatti_Chiron_%2836559710091%29.jpg",
+            category: "bugatti"
+        },
+        {
+            name: "Bugatti Divo",
+            price: "Rs  41 crore",
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Bugatti_Divo%2C_GIMS_2019%2C_Le_Grand-Saconnex_%28GIMS0029%29.jpg/800px-Bugatti_Divo%2C_GIMS_2019%2C_Le_Grand-Saconnex_%28GIMS0029%29.jpg",
+            category: "bugatti"
+        },
+        {
+            name: "Bugatti Centodieci",
+            price: "Rs  61.00 crore",
+            image: "https://cdn.carbuzz.com/gallery-images/840x560/616000/500/616566.jpg",
+            category: "bugatti"
+        },
+        {
+            name: "Bugatti Bolide",
+            price: "Rs  19.21 crore",
+            image: "https://www.bugatti.com/fileadmin/_processed_/d/a/csm_Desktop_Stage_v4_075c72c979.png",
+            category: "bugatti"
+        },
+        {
+            name: "Bugatti Mistral",
+            price: "Rs 40 crore",
+            image: "https://www.topgear.com/sites/default/files/2023/01/01%20BUGATTI_W16-Mistral_Japan_0.jpg",
+            category: "bugatti"
+        },
+        {
+            name: "Koenigsegg Agera",
+            price: "Rs  12 crore",
+            image: "https://stat.overdrive.in/wp-content/odgallery/2013/10/13867_AgeraR_configurator-860x595.jpg",
+            category: "koenigsegg"
+        },
+        {
+            name: "Koenigsegg Regera",
+            price: "Rs  45.08 crore",
+            image: "https://gaadiwaadi.com/wp-content/uploads/2016/03/koenigsegg-regera.jpg",
+            category: "koenigsegg"
+        },
+        {
+            name: "Koenigsegg One:1",
+            price: "Rs  12.5 crore",
+            image: "https://ic1.maxabout.us/autos/cars_india//K/2017/10/koenigsegg-one1-cars-maxabout.jpg",
+            category: "koenigsegg"
+        },
+        {
+            name: "Koenigsegg Trevita",
+            price: "Rs  1.81 crore",
+            image: "https://img.mensxp.com/media/photogallery/2020/Aug/most-expensive-cars-in-the-world-gallery-4_5f33ca54a86d4.jpeg",
+            category: "koenigsegg"
+        },
+        {
+            name: "Koenigsegg Jesko",
+            price: "Rs  66.06 crore",
+            image: "https://i.ytimg.com/vi/PQIEMAPuqTc/maxresdefault.jpg",
+            category: "koenigsegg"
+        },
+        {
+            name: "Koenigsegg Agera S",
+            price: "Rs 12 crore",
+            image: "https://www.topcarrating.com/koenigsegg/2013-koenigsegg-agera-s-3.jpg",
+            category: "koenigsegg"
+        },
+        {
+            name: "toyota supra mk1",
+            price: "Rs  85 Lakh",
+            image: "https://wallpapercave.com/wp/wp11797849.jpg",
+            category: "toyota"
+        },
+        {
+            name: "toyota supra mk2",
+            price: "Rs  85.00 Lakh",
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Toyota_Supra_MK2_red.jpg/1200px-Toyota_Supra_MK2_red.jpg",
+            category: "toyota"
+        },
+        {
+            name: "toyota supra mk3",
+            price: "Rs  70 Lakh",
+            image: "https://i.pinimg.com/originals/f4/87/af/f487af3be9d43ba79ae68fc4e1c11c9a.jpg",
+            category: "toyota"
+        },
+        {
+            name: "toyota supra mk4",
+            price: "Rs  85 Lakh",
+            image: "https://www.tuningblog.eu/wp-content/uploads/2020/07/Fast-Furious-Paul-Walker-Toyota-Supra-MK4-Replika-Header.jpg",
+            category: "toyota"
+        },
+        {
+            name: "toyota supra mk5",
+            price: "Rs  85 Lakh",
+            image: "https://wallpaperaccess.com/full/3290787.jpg",
+            category: "toyota"
+        },
+    ];
+
+
+    viewAllRecord();
+    function viewAllRecord() {
+        let tbl = "";
+        data.map((val) => {
+            tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card">
+                        <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <span class="card-text">price - ${val.price}</span>
+                        <p class="card-text">${val.category}</p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function lamborghiniData() {
+        let category = "lamborghini";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card">
+                        <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <span class="card-text">price - ${val.price}</span>
+                        <p class="card-text">${val.category}</p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function bugattiData() {
+        let category = "bugatti";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card">
+                        <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <span class="card-text">price - ${val.price}</span>
+                        <p class="card-text">${val.category}</p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function koenigseggData() {
+        let category = "koenigsegg";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card">
+                        <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <span class="card-text">price - ${val.price}</span>
+                        <p class="card-text">${val.category}</p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function toyotaData() {
+        let category = "toyota";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card">
+                        <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <span class="card-text">price - ${val.price}</span>
+                        <p class="card-text">${val.category}</p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function dodgeData() {
+        let category = "dodge";
+        let tbl = "";
+        data.map((val) => {
+            if (val.category == category) {
+                tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card">
+                        <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <span class="card-text">price - ${val.price}</span>
+                        <p class="card-text">${val.category}</p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+</script>
+
+</html>
